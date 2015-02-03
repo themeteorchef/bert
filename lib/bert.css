@@ -39,8 +39,14 @@
 }
 
 .bert-alert p {
+  margin-bottom: 0px;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 22px;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.bert-alert span {
+  display: inline-block;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
@@ -51,6 +57,16 @@
 .bert-alert.animated {
   transition-duration: .3s;
   transition-timing-function: linear;
+}
+
+/*------------------------------------*\
+  .bert-alert .container
+\*------------------------------------*/
+
+.bert-alert .container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /*------------------------------------*\
@@ -117,9 +133,9 @@
 
 .bert-alert.fixed-top span,
 .bert-alert.fixed-bottom span {
-  display: inline-block;
   float: right;
   font-size: 22px;
+  line-height: 21px;
 }
 
 /*------------------------------------*\
@@ -132,6 +148,10 @@
 
 .bert-alert.fixed-top span {
   margin-top: -2px;
+}
+
+.bert-alert.fixed-bottom span {
+  margin-top: 0px;
 }
 
 /*------------------------------------*\
@@ -153,14 +173,6 @@
 
 .bert-alert.fixed-bottom {
   bottom: 0px;
-}
-
-.bert-alert.fixed-bottom p {
-  margin-top: 2px;
-}
-
-.bert-alert.fixed-bottom span {
-  margin-top: 1px;
 }
 
 /*------------------------------------*\
@@ -214,12 +226,14 @@
 .bert-alert.growl-top-right span,
 .bert-alert.growl-bottom-right span,
 .bert-alert.growl-bottom-left span {
-  display: block;
+  display: inline-block;
   position: absolute;
   width: 25px;
   height: 25px;
-  padding: 5px 0;
+  padding: 3px 0 4px;
   top: -10px;
+  font-size: 15px;
+  line-height: 16px;
   text-align: center;
   background: #333;
   color: #fff;
