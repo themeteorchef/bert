@@ -63,8 +63,9 @@
   .bert-alert .container
 \*------------------------------------*/
 
-.bert-alert .container {
+.bert-alert > .container {
   width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
 }
