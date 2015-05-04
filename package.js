@@ -1,6 +1,6 @@
 Package.describe({
   name: 'themeteorchef:bert',
-  version: '1.0.2',
+  version: '1.1.0',
   summary: 'Client-side curmudgeon for Meteor.',
   git: 'http://github.com/themeteorchef/bert',
   documentation: 'README.md'
