@@ -88,7 +88,7 @@ Bert was designed to be easily customized to fit your application's styles. The 
 <template name="bertAlert">
   <div class="bert-alert {{alert.style}} {{alert.type}} clearfix">
     <div class="container">
-      <p>{{alert.message}}</p>
+      <p>{{{alert.message}}}</p>
       {{#if alert.dismissable}}
         <span>&times;</span>
       {{/if}}
@@ -98,6 +98,14 @@ Bert was designed to be easily customized to fit your application's styles. The 
 ```
 
 Nice and simple! All of [the CSS](https://github.com/themeteorchef/bert/tree/master/lib/bert.css) is easily overridden, too. Dress Bert up!
+
+**Note**: the handlebars helper for outputting Bert `{{{alert.message}}}` makes use of Handlebar's triple mustache convention to prevent escaping of HTML characters. This means you can pass any HTML to Bert and he'll render it inside the alert. For example:
+
+```
+Bert.alert("<h1>Hiya</h1>", 'danger', 'growl-top-right');
+```
+
+Keep in mind: this means you're responsible for styling anything you add.
 
 ##### Animation Speed
 A quick note about animation speed. If `animated` is set to `true` in the defaults, you can specify the speed at which your alerts come in and out of view. Keep in mind this requires two changes: setting the `animationSpeed` value in `Bert.defaults` as well as specifying the animation speed in your CSS. For example, if we wanted to change Bert's default speed of `300` milliseconds to be a bit slower, we would do:

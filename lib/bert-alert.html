@@ -1,7 +1,7 @@
 <template name="bertAlert">
   <div class="bert-alert {{alert.style}} {{alert.type}} clearfix">
     <div class="container">
-      <p>{{alert.message}}</p>
+      <p>{{{alert.message}}}</p>
       {{#if alert.dismissable}}
         <span>&times;</span>
       {{/if}}
