@@ -3,7 +3,7 @@ Bert is a client-side, multi-display alerts system for Meteor.
 
 ![Angry Bert](http://i0.kym-cdn.com/photos/images/original/000/417/099/955.jpg)
 
-## Installation
+#### Installation
 
 `meteor add themeteorchef:bert`
 
