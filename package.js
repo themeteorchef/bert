@@ -1,31 +1,31 @@
 Package.describe({
   name: 'themeteorchef:bert',
-  version: '1.1.0',
+  version: '2.0.0',
   summary: 'Client-side curmudgeon for Meteor.',
   git: 'http://github.com/themeteorchef/bert',
   documentation: 'README.md'
 });
 
-Package.onUse(function(api) {
-  // Set versionsFrom()
-  api.versionsFrom('1.0.3.1');
+Package.onUse( function( api ) {
+  api.versionsFrom( '1.2.0.2' );
 
-  // Define what resources our package will use.
   api.use([
+    'ecmascript',
     'templating',
-    'jquery'
+    'jquery',
+    'velocityjs:velocityjs@1.2.1',
+    'fourseven:scss@3.3.3_3',
+    'fortawesome:fontawesome@4.4.0'
   ], 'client');
 
-  // Add files for our package.
   api.addFiles([
-    'lib/bert-alert.html',
-    'lib/bert.css',
-    'lib/bert.js',
-    'lib/bert-alert.js'
+    'templates/bert-alert.html',
+    'templates/bert-alert.js',
+    'stylesheets/colors.scss',
+    'stylesheets/flexbox.scss',
+    'stylesheets/bert.scss',
+    'bert.js',
   ], 'client');
 
-  // Export any global variables in our package so they're visible on the client.
-  api.export('Bert');
+  api.export( 'Bert' );
 });
-
-// Tests would go here, but Bert wasn't too happy about testing. Maybe later.
