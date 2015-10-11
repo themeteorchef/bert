@@ -51,20 +51,25 @@ class BertAlert {
   handleAlert() {
     this.setBertOnSession( arguments );
     setTimeout( () => { this.show(); }, 100 );
-    setTimeout( () => { this.hide(); }, this.defaults.hideDelay );
+    this.bertTimer();
+  }
+
+  bertTimer() {
+    clearTimeout( this.timer );
+    this.timer = setTimeout( () => { this.hide(); }, this.defaults.hideDelay );
+    return this.timer;
   }
 
   show() {
     $( '.bert-alert' ).addClass( 'show' );
     setTimeout( () => { $( '.bert-alert' ).addClass( 'animate' ); }, 100 );
-    clearTimeout( bertTimer );
+    this.bertTimer();
   }
 
   hide() {
     $( '.bert-alert' ).removeClass( 'animate' );
     setTimeout( () => { $( '.bert-alert' ).removeClass( 'show' ); }, 300 );
     setTimeout( () => { this.setBertOnSession( null ); }, 500 );
-    clearTimeout( bertTimer );
   }
 
   setBertOnSession( alert ) {
