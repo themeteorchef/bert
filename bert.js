@@ -32,12 +32,12 @@ class BertAlert {
     };
   }
 
-  alert( message, type, style, icon ) {
+  alert() {
     if ( this.isVisible() ) {
       this.hide();
-      setTimeout( () => { this.handleAlert( message, type, style, icon ); }, 300 );
+      setTimeout( () => { this.handleAlert( arguments ); }, 300 );
     } else {
-      this.handleAlert( message, type, style, icon );
+      this.handleAlert( arguments );
     }
   }
 
@@ -45,9 +45,9 @@ class BertAlert {
     return $( '.bert-alert' ).hasClass( 'show' );
   }
 
-  handleAlert() {
+  handleAlert( alert ) {
     this.registerClickHandler();
-    this.setBertOnSession( arguments );
+    this.setBertOnSession( alert );
     setTimeout( () => { this.show(); }, 300 );
     this.bertTimer();
   }
@@ -75,7 +75,17 @@ class BertAlert {
   }
 
   setBertOnSession( alert ) {
-    if ( alert !== null ) {
+    if ( typeof alert[0] === 'object' ) {
+      let type = alert[0].type || this.defaults.type;
+
+      Session.set( 'bertAlert', {
+        title: alert[0].title || "",
+        message: alert[0].message || "",
+        type: type,
+        style: alert[0].style || this.defaults.style,
+        icon: alert[0].icon || this.icons[ type ]
+      });
+    } else {
       let type = alert[1] || this.defaults.type;
 
       Session.set( 'bertAlert', {
@@ -84,10 +94,10 @@ class BertAlert {
         style: alert[2] || this.defaults.style,
         icon: alert[3] || this.icons[ type ]
       });
-    } else {
-      Session.set( 'bertAlert', null );
     }
   }
 }
 
 Bert = new BertAlert();
+
+// Bert.alert( { message: 'Hello' } )
