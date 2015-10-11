@@ -5,6 +5,7 @@
         <i class="fa {{alert.icon}}"></i>
       </div>
       <div class="bert-content">
+        {{#if alert.title}}<h5>{{alert.title}}</h5>{{/if}}
         <p>{{{alert.message}}}</p>
       </div>
     </div>

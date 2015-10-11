@@ -12,6 +12,7 @@ Package.onUse( function( api ) {
   api.use([
     'ecmascript',
     'templating',
+    'session',
     'jquery',
     'fourseven:scss@3.3.3_3',
     'fortawesome:fontawesome@4.4.0'
@@ -20,6 +21,7 @@ Package.onUse( function( api ) {
   api.addFiles([
     'templates/bert-alert.html',
     'templates/bert-alert.js',
+    'templates/body.html',
     'stylesheets/colors.scss',
     'stylesheets/flexbox.scss',
     'stylesheets/bert.scss',
@@ -27,4 +29,10 @@ Package.onUse( function( api ) {
   ], 'client');
 
   api.export( 'Bert' );
+});
+
+Package.onTest(function (api) {
+  api.use( [ 'tinytest', 'session', 'jquery' ] );
+  api.use( 'themeteorchef:bert' );
+  api.addFiles( 'tests/client.js', 'client' );
 });
