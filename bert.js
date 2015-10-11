@@ -35,7 +35,7 @@ class BertAlert {
   alert( message, type, style, icon ) {
     if ( this.isVisible() ) {
       this.hide();
-      setTimeout( () => { this.handleAlert( message, type, style, icon ); }, 1000 );
+      setTimeout( () => { this.handleAlert( message, type, style, icon ); }, 300 );
     } else {
       this.handleAlert( message, type, style, icon );
     }
@@ -48,7 +48,7 @@ class BertAlert {
   handleAlert() {
     this.registerClickHandler();
     this.setBertOnSession( arguments );
-    setTimeout( () => { this.show(); }, 100 );
+    setTimeout( () => { this.show(); }, 300 );
     this.bertTimer();
   }
 
@@ -72,7 +72,6 @@ class BertAlert {
   hide() {
     $( '.bert-alert' ).removeClass( 'animate' );
     setTimeout( () => { $( '.bert-alert' ).removeClass( 'show' ); }, 300 );
-    setTimeout( () => { this.setBertOnSession( null ); }, 750 );
   }
 
   setBertOnSession( alert ) {

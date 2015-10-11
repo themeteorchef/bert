@@ -13,7 +13,6 @@ Package.onUse( function( api ) {
     'ecmascript',
     'templating',
     'jquery',
-    'velocityjs:velocityjs@1.2.1',
     'fourseven:scss@3.3.3_3',
     'fortawesome:fontawesome@4.4.0'
   ], 'client');
