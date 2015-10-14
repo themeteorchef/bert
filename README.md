@@ -1,12 +1,31 @@
-## Bert - Client Side Curmudgeon
-Bert is a client-side, multi-display alerts system for Meteor.
+### Bert
+Bert is a client side, multi-style alerts system for Meteor.
 
-![Angry Bert](http://i0.kym-cdn.com/photos/images/original/000/417/099/955.jpg)
+<img width="200" src="https://tmc-post-content.s3.amazonaws.com/bert-happy-mad.png" alt="Bert looking angry.">
 
-#### Features
-- Multiple Styles (Fixed Top, Fixed Bottom, and Four-Corner Growl)
-- Multiple Types (Default, Success, Info, Warning, and Danger)
-- Optional Animations
+
+#### Installation
+To get Bert into your app, just run the following command from within your project's directory:
+
+```
+meteor add themeteorchef:bert
+```
+
+#### v2.0.* requires Meteor 1.2 or higher
+Bert wasn't too happy about this one. Because Bert relies on the `ecmascript` package, v2.0.* is _not_ compatible with versions of Meteor before 1.2. This means that if you attempt to update Bert in a Meteor application using a version < 1.2, you will receive an error in your terminal. For now, applications that need to remain below 1.2 are advised to pin Bert to `1.1.0`: `meteor add bert@1.1.0`. Bert apologizes for this.
+
+#### Changes & Deprecations in v2.0.*
+Bert hit the gym since v1.0 came out and has dropped a bit of weight. If you were working with Bert prior to version 2.0 here are a few things to keep in mind:
+
+1. Bert no longer requires you to add the `{{> bertAlert}}` template tag manually. This is automatically added to your application's `<body></body>` tag.
+2. Bert has dropped support for setting the following defaults: `animated`, `animationSpeed`, `autoHide`, and `dismmissable`.
+3. Like other notification systems, Bert can now be dismissed with a single click, anywhere on the message.
+4. Bert went to some self-actualization classes and realized he prefers to always be animated and always hide on his own. Of course, you can suggest how fast he should hide and he'll listen.
+
+Despite having totally ripped abs now, aside from the changes to defaults mentioned above, Bert's API is 100% backwards compatible. Bert doesn't forget where he came from. Represent.
+
+#### Basic Usage
+There are two ways to display messages with Bert
 
 #### Contents
 
@@ -31,6 +50,7 @@ That's it! Bert will handle the rest. For example, if we wanted to tell Ernie to
 ```js
 Bert.alert('Ernie, tubby time is over! Pick up your duckies, now!', 'danger', 'growl-top-right');
 ```
+
 ...which would get us something like this:
 
 ![Danger Alert Example](http://cl.ly/ZbPa/Image%202015-02-03%20at%2011.56.44%20AM.png)
