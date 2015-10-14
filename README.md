@@ -111,7 +111,7 @@ Bert.defaults = {
   // Accepts: default, success, info, warning, danger.
 };
 ```
-To add new types and styles, you can call `Bert.types.push( '<type>' )` or `Bert.styles.push( '<style>' )` from anywhere on the client. To change the icon used for one of the pre-defined types, you can call `Bert.icons.<type> = 'fa-icon-name'`, or add a new one by calling `Bert.icons.[ 'new-type' ] = 'fa-icon-name'`.
+To add new types and styles, you can call `Bert.types.push( '<type>' )` or `Bert.styles.push( '<style>' )` from anywhere on the client. To change the icon used for one of the pre-defined types, you can call `Bert.icons.<type> = 'fa-icon-name'`, or add a new one by calling `Bert.icons[ 'new-type' ] = 'fa-icon-name'`.
 
 To set a new default, just call `Bert.defaults.<setting>` in your client code. For example, to change Bert's hide delay (how long Bert stays on screen), you can set `Bert.defaults.hideDelay = 2000`. Here, this would make Bert's alerts go away after two seconds instead of three and a half.
 
@@ -136,7 +136,7 @@ Bert was designed to be easily customized to fit your application's styles. The 
 
 Nice and simple! All of [the CSS](https://github.com/themeteorchef/bert/tree/master/stylesheets/bert.scss) is easily overridden, too. Dress Bert up!
 
-**Note**: the handlebars helper for outputting Bert `{{{alert.message}}}` makes use of Handlebar's triple mustache convention to prevent escaping of HTML characters. This means you can pass any HTML to Bert and he'll render it inside the alert. For example:
+**Note**: the Spacebars helper for outputting Bert `{{{alert.message}}}` makes use of Spacebar's triple mustache convention to prevent escaping of HTML characters. This means you can pass any HTML to Bert and he'll render it inside the alert. For example:
 
 ```
 Bert.alert( '<h1>Hiya</h1>', 'danger', 'growl-top-right' );
