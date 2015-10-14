@@ -48,7 +48,7 @@ class BertAlert {
   handleAlert( alert ) {
     this.registerClickHandler();
     this.setBertOnSession( alert );
-    setTimeout( () => { this.show(); }, 300 );
+    setTimeout( () => { this.show(); }, 100 );
     this.bertTimer();
   }
 
@@ -65,7 +65,7 @@ class BertAlert {
 
   show() {
     $( '.bert-alert' ).addClass( 'show' );
-    setTimeout( () => { $( '.bert-alert' ).addClass( 'animate' ); }, 300 );
+    setTimeout( () => { $( '.bert-alert' ).addClass( 'animate' ); }, 100 );
     this.bertTimer();
   }
 
