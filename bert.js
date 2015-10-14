@@ -99,5 +99,3 @@ class BertAlert {
 }
 
 Bert = new BertAlert();
-
-// Bert.alert( { message: 'Hello' } )
