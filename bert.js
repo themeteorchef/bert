@@ -48,7 +48,7 @@ class BertAlert {
   handleAlert( alert ) {
     this.registerClickHandler();
     this.setBertOnSession( alert );
-    setTimeout( () => { this.show(); }, 300 );
+    setTimeout( () => { this.show(); }, 20 );
     this.bertTimer();
   }
 
@@ -64,14 +64,17 @@ class BertAlert {
   }
 
   show() {
-    $( '.bert-alert' ).addClass( 'show' );
-    setTimeout( () => { $( '.bert-alert' ).addClass( 'animate' ); }, 300 );
-    this.bertTimer();
+    $( '.bert-alert' ).addClass( 'show' ).delay( 25 ).queue( () => {
+      $( '.bert-alert' ).addClass( 'animate' ).dequeue();
+    });
   }
 
   hide() {
     $( '.bert-alert' ).removeClass( 'animate' );
-    setTimeout( () => { $( '.bert-alert' ).removeClass( 'show' ); }, 300 );
+    setTimeout( () => {
+      $( '.bert-alert' ).removeClass( 'show' );
+      Session.set( 'bertAlert', null );
+    }, 300 );
   }
 
   setBertOnSession( alert ) {
