@@ -15,7 +15,6 @@ Package.onUse( function( api ) {
     'session',
     'jquery',
     'fourseven:scss@3.3.3_3',
-    'fortawesome:fontawesome@4.4.0'
   ], 'client');
 
   api.addFiles([
