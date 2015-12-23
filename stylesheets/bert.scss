@@ -31,14 +31,13 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   float: left;
   width: 32px;
   height: 32px;
-  background: rgba( 0, 0, 0, 0.30 );
   border-radius: 3px;
   margin-right: 15px;
 
   i {
     position: relative;
     top: 0px;
-    font-size: 16px;
+    font-size: 1.5em;
     line-height: 16px;
   }
 }
@@ -61,7 +60,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   display: block;
   color: $black-2;
   margin: 0px 0px 5px;
-  font-size: 14px;
+  font-size: 1.4em;
 }
 
 .bert-alert:not(.default) .bert-content > h5 {
@@ -69,7 +68,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 }
 
 .bert-alert .bert-content > p {
-  font-size: 14px;
+  font-size: 1.4em;
   line-height: 20px;
   margin: 0;
 }
@@ -131,11 +130,11 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
     display: block;
     color: #fff;
     margin: 0px 0px 5px;
-    font-size: 14px;
+    font-size: 1.4em;
   }
 
   .bert-content p {
-    font-size: 14px;
+    font-size: 1.4em;
     width: 100%;
   }
 }
