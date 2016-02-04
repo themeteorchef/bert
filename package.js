@@ -13,8 +13,7 @@ Package.onUse( function( api ) {
     'ecmascript',
     'templating',
     'session',
-    'jquery',
-    'fourseven:scss@3.3.3_3',
+    'fourseven:scss@3.4.1',
     'fortawesome:fontawesome@4.4.0'
   ], 'client');
 

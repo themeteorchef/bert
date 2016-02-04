@@ -104,7 +104,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 .bert-alert.fixed-top {
   top: -100%;
   padding-top: 20px;
-  -webkit-transition: top .8s $transition;
+  transition: top .8s $transition;
 
   &.animate {
     padding-top: 20px;
@@ -115,7 +115,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 .bert-alert.fixed-bottom {
   bottom: -100%;
   padding-bottom: 20px;
-  -webkit-transition: bottom .8s $transition;
+  transition: bottom .8s $transition;
 
   &.animate {
     padding-bottom: 20px;
@@ -145,7 +145,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   left: -100%;
   right: auto;
   width: calc( 100% - 30px );
-  -webkit-transition: left .8s $transition;
+  transition: left .8s $transition;
 
   &.animate {
     left: 15px;
@@ -167,7 +167,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   right: -100%;
   left: auto;
   width: calc( 100% - 30px );
-  -webkit-transition: right .8s $transition;
+  transition: right .8s $transition;
 
   &.animate {
     right: 15px;
@@ -183,7 +183,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   .bert-alert.growl-bottom-left {
     left: -100%;
     right: auto;
-    -webkit-transition: left .8s $transition;
+    transition: left .8s $transition;
 
     &.animate {
       left: 15px;
@@ -194,7 +194,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   .bert-alert.growl-bottom-right {
     right: -100%;
     left: auto;
-    -webkit-transition: right .8s $transition;
+    transition: right .8s $transition;
 
     &.animate {
       right: 15px;

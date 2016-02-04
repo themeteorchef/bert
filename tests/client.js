@@ -15,7 +15,7 @@ Tinytest.addAsync( 'Bert can set a default message', function ( test, next ) {
   Bert.alert( 'Testing 123', 'default' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'default' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'default' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -25,7 +25,7 @@ Tinytest.addAsync( 'Bert can set a success message', function ( test, next ) {
   Bert.alert( 'Testing 123', 'success' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'success' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'success' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -35,7 +35,7 @@ Tinytest.addAsync( 'Bert can set an info message', function ( test, next ) {
   Bert.alert( 'Testing 123', 'info' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'info' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'info' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -45,7 +45,7 @@ Tinytest.addAsync( 'Bert can set a warning message', function ( test, next ) {
   Bert.alert( 'Testing 123', 'warning' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'warning' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'warning' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -55,7 +55,7 @@ Tinytest.addAsync( 'Bert can set a danger message', function ( test, next ) {
   Bert.alert( 'Testing 123', 'danger' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'danger' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'danger' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -65,7 +65,7 @@ Tinytest.addAsync( 'Bert can set a fixed-top message', function ( test, next ) {
   Bert.alert( 'Testing 123', 'default', 'fixed-top' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'fixed-top' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'fixed-top' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -75,7 +75,7 @@ Tinytest.addAsync( 'Bert can set a fixed-bottom message', function ( test, next 
   Bert.alert( 'Testing 123', 'default', 'fixed-bottom' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'fixed-bottom' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'fixed-bottom' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -85,7 +85,7 @@ Tinytest.addAsync( 'Bert can set a growl-top-left message', function ( test, nex
   Bert.alert( 'Testing 123', 'default', 'growl-top-left' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'growl-top-left' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'growl-top-left' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -95,7 +95,7 @@ Tinytest.addAsync( 'Bert can set a growl-top-right message', function ( test, ne
   Bert.alert( 'Testing 123', 'default', 'growl-top-right' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'growl-top-right' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'growl-top-right' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -105,7 +105,7 @@ Tinytest.addAsync( 'Bert can set a growl-bottom-left message', function ( test, 
   Bert.alert( 'Testing 123', 'default', 'growl-bottom-left' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'growl-bottom-left' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'growl-bottom-left' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -115,7 +115,7 @@ Tinytest.addAsync( 'Bert can set a growl-bottom-right message', function ( test,
   Bert.alert( 'Testing 123', 'default', 'growl-bottom-right' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert' ).hasClass( 'growl-bottom-right' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'growl-bottom-right' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -125,7 +125,7 @@ Tinytest.addAsync( 'Bert can set a custom icon', function ( test, next ) {
   Bert.alert( 'Testing 123', 'default', 'fixed-top', 'fa-amazon' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert i' ).hasClass( 'fa-amazon' );
+    var hasClass = document.getElementsById( 'bert-alert' ).classList.contains( 'fa-amazon' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -144,9 +144,9 @@ Tinytest.addAsync( 'Bert can set a complex message', function ( test, next ) {
     var alert = {
       title: $( '.bert-alert .bert-content h5' ).text(),
       message: $( '.bert-alert .bert-content p' ).text(),
-      type: $( '.bert-alert' ).hasClass( 'info' ),
-      style: $( '.bert-alert' ).hasClass( 'growl-top-right' ),
-      icon: $( '.bert-alert i' ).hasClass( 'fa-music' )
+      type: document.getElementsById( 'bert-alert' ).classList.contains( 'info' ),
+      style: document.getElementsById( 'bert-alert' ).classList.contains( 'growl-top-right' ),
+      icon: document.getElementsById( 'bert-alert' ).classList.contains( 'fa-music' )
     };
 
     test.equal( alert.title, 'Now Playing' );

@@ -18,43 +18,50 @@ class BertAlert {
     ];
 
     this.icons = {
-      default: 'fa-bell',
-      success: 'fa-check',
-      info: 'fa-info',
-      warning: 'fa-warning',
-      danger: 'fa-remove'
+      default: 'fa fa-bell',
+      success: 'fa fa-check',
+      info: 'fa fa-info',
+      warning: 'fa fa-warning',
+      danger: 'fa fa-remove'
     };
 
     this.defaults = {
+      autoHide: true,
       hideDelay: 3500,
-      style: 'fixed-top',
+      style: 'growl-top-right',
       type: 'default'
     };
+
+    setTimeout( () => {
+      this.bertAlert = document.getElementById( 'bert-alert' );
+    }, 300 );
   }
 
   alert() {
     if ( this.isVisible() ) {
-      this.hide();
-      setTimeout( () => { this.handleAlert( arguments ); }, 300 );
+      this.hide( () => { this.handleAlert( arguments ); });
     } else {
       this.handleAlert( arguments );
     }
   }
 
   isVisible() {
-    return $( '.bert-alert' ).hasClass( 'show' );
+    return this.bertAlert.classList.contains( 'show' );
   }
 
   handleAlert( alert ) {
     this.registerClickHandler();
     this.setBertOnSession( alert );
     setTimeout( () => { this.show(); }, 20 );
-    this.bertTimer();
+
+    if ( this.defaults.autoHide ) {
+      this.bertTimer();
+    }
   }
 
   registerClickHandler() {
-    $( '.bert-alert' ).off( 'click' );
-    $( '.bert-alert' ).on( 'click', () => { this.hide(); } );
+    this.bertAlert.removeEventListener( 'click' );
+    this.bertAlert.addEventListener( 'click', () => { this.hide(); } );
   }
 
   bertTimer() {
@@ -64,17 +71,29 @@ class BertAlert {
   }
 
   show() {
-    $( '.bert-alert' ).addClass( 'show' ).delay( 25 ).queue( () => {
-      $( '.bert-alert' ).addClass( 'animate' ).dequeue();
-    });
+    let alert        = this.bertAlert,
+        alertClasses = alert.classList;
+
+    alertClasses.add( 'show' );
+    setTimeout( () => { alertClasses.add( 'animate' ); }, 25 );
   }
 
-  hide() {
-    $( '.bert-alert' ).removeClass( 'animate' );
+  hide( callback ) {
+    let alert        = this.bertAlert,
+        alertClasses = alert.classList;
+
+    alertClasses.remove( 'animate' );
+
     setTimeout( () => {
-      $( '.bert-alert' ).removeClass( 'show' );
+      alertClasses.remove( 'show' );
       Session.set( 'bertAlert', null );
-    }, 300 );
+    }, 800 ); // 800 === animation delay.
+
+    if ( callback ) {
+      // If we have a callback (chained alert), then we want to wait until
+      // above hide functions have finished before calling it.
+      setTimeout( () => { callback(); }, 850 );
+    }
   }
 
   setBertOnSession( alert ) {
