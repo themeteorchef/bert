@@ -2,166 +2,195 @@ Tinytest.add( 'Bert is available on the client', function ( test ) {
   test.equal( typeof Bert, 'object' );
 });
 
-Tinytest.addAsync( 'Bert can set an alert on Session', function ( test, next ) {
-  var testMessage = 'Testing Bert\'s ability to display an alert.';
-
-  Bert.alert( testMessage );
-  var message = Session.get( 'bertAlert' ).message;
-
-  Meteor.setTimeout( function() {
-    test.equal( message, testMessage );
-    next();
-  }, 1000 );
+Tinytest.add( 'Bert can set an alert on Session', function( test ) {
+  Bert.alert( 'Yes, I do mind!' );
+  var bertOnSession = Session.get( 'bertAlert' );
+  test.equal( bertOnSession.message, 'Yes, I do mind!' );
 });
 
-Tinytest.addAsync( 'Bert can set a default message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default' );
+Tinytest.addAsync( 'Bert can set a default message', function( test, next ) {
+  Bert.alert( 'Yes, I do mind!', 'default' );
 
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'default' );
+  setTimeout( function() {
+    var bertElement = document.getElementById( 'bert-alert' ),
+        bertClasses = bertElement.classList,
+        hasClass    = bertClasses.contains( 'default' );
     test.equal( hasClass, true );
     next();
-  }, 1000 );
+  }, 3000 );
 });
 
-Tinytest.addAsync( 'Bert can set a success message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'success' );
+Tinytest.addAsync( 'Bert can set a success message', function( test, next ) {
+  Bert.alert( 'Yes, I do mind!', 'success' );
 
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'success' );
+  setTimeout( function() {
+    var bertElement = document.getElementById( 'bert-alert' ),
+        bertClasses = bertElement.classList,
+        hasClass    = bertClasses.contains( 'success' );
     test.equal( hasClass, true );
     next();
-  }, 1000 );
+  }, 3000 );
 });
 
-Tinytest.addAsync( 'Bert can set an info message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'info' );
+Tinytest.addAsync( 'Bert can set an info message', function( test, next ) {
+  Bert.alert( 'Yes, I do mind!', 'info' );
+  var bertElement = document.getElementById( 'bert-alert' ),
+      bertClasses = bertElement.classList,
+      hasClass    = bertClasses.contains( 'info' );
 
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'info' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
+  console.log( hasClass );
+  test.equal( hasClass, true );
+
+  setTimeout( function() { next(); }, 1000 );
 });
 
-Tinytest.addAsync( 'Bert can set a warning message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'warning' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'warning' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a danger message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'danger' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'danger' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a fixed-top message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'fixed-top' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'fixed-top' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a fixed-bottom message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'fixed-bottom' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'fixed-bottom' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a growl-top-left message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'growl-top-left' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'growl-top-left' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a growl-top-right message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'growl-top-right' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'growl-top-right' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a growl-bottom-left message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'growl-bottom-left' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'growl-bottom-left' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a growl-bottom-right message', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'growl-bottom-right' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = document.getElementById( 'bert-alert' ).classList.contains( 'growl-bottom-right' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a custom icon', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'fixed-top', 'fa fa-amazon' );
-
-  var alertElement = document.getElementById( 'bert-alert' );
-
-  Meteor.setTimeout( function() {
-    var hasClass = alertElement.getElementsByTagName( 'i' )[ 0 ].classList.contains( 'fa-amazon' );
-    test.equal( hasClass, true );
-    next();
-  }, 1000 );
-});
-
-Tinytest.addAsync( 'Bert can set a complex message', function ( test, next ) {
-  Bert.alert({
-    title: 'Now Playing',
-    message: 'Artist &mdash; Song Name',
-    type: 'info',
-    style: 'growl-top-right',
-    icon: 'fa fa-music'
-  });
-
-  Meteor.setTimeout( function() {
-    var alertElement = document.getElementById( 'bert-alert' ),
-        alertClasses = alertElement.classList;
-
-    var alert = {
-      title: alertElement.getElementsByTagName( 'h5' )[ 0 ].innerText,
-      message: alertElement.getElementsByTagName( 'p' )[ 0 ].innerText,
-      type: alertClasses.contains( 'info' ),
-      style: alertClasses.contains( 'growl-top-right' ),
-      icon: alertElement.getElementsByTagName( 'i' )[ 0 ].classList.contains( 'fa-music' )
-    };
-
-    test.equal( alert.title, 'Now Playing' );
-    test.equal( alert.message, 'Artist — Song Name' );
-    test.equal( alert.type, true );
-    test.equal( alert.style, true );
-    test.equal( alert.icon, true );
-    next();
-  }, 1000 );
-});
+//
+// Tinytest.addAsync( 'Bert can set an info message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'info' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'info' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a warning message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'warning' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'warning' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a danger message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'danger' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'danger' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a fixed-top message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'fixed-top' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'fixed-top' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a fixed-bottom message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'fixed-bottom' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'fixed-bottom' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a growl-top-left message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'growl-top-left' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'growl-top-left' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a growl-top-right message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'growl-top-right' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'growl-top-right' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a growl-bottom-left message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'growl-bottom-left' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'growl-bottom-left' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a growl-bottom-right message', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'growl-bottom-right' );
+//
+//   var bertClasses = document.getElementById( 'bert-alert' ).classList;
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = bertClasses.contains( 'growl-bottom-right' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a custom icon', function ( test, next ) {
+//   Bert.alert( 'Testing 123', 'default', 'fixed-top', 'fa fa-amazon' );
+//
+//   var alertElement = document.getElementById( 'bert-alert' );
+//
+//   Meteor.setTimeout( function() {
+//     var hasClass = alertElement.getElementsByTagName( 'i' )[ 0 ].classList.contains( 'fa-amazon' );
+//     test.equal( hasClass, true );
+//     next();
+//   }, 1000 );
+// });
+//
+// Tinytest.addAsync( 'Bert can set a complex message', function ( test, next ) {
+//   Bert.alert({
+//     title: 'Now Playing',
+//     message: 'Artist &mdash; Song Name',
+//     type: 'info',
+//     style: 'growl-top-right',
+//     icon: 'fa fa-music'
+//   });
+//
+//   Meteor.setTimeout( function() {
+//     var bertElement = document.getElementById( 'bert-alert' ),
+//         bertClasses = bertElement.classList;
+//
+//     var alert = {
+//       title: bertElement.getElementsByTagName( 'h5' )[ 0 ].innerText,
+//       message: bertElement.getElementsByTagName( 'p' )[ 0 ].innerText,
+//       type: bertClasses.contains( 'info' ),
+//       style: bertClasses.contains( 'growl-top-right' ),
+//       icon: bertElement.getElementsByTagName( 'i' )[ 0 ].classList.contains( 'fa-music' )
+//     };
+//
+//     test.equal( alert.title, 'Now Playing' );
+//     test.equal( alert.message, 'Artist — Song Name' );
+//     test.equal( alert.type, true );
+//     test.equal( alert.style, true );
+//     test.equal( alert.icon, true );
+//     next();
+//   }, 1000 );
+// });

@@ -52,7 +52,7 @@ class BertAlert {
   handleAlert( alert ) {
     this.registerClickHandler();
     this.setBertOnSession( alert );
-    setTimeout( () => { this.show(); }, 20 );
+    setTimeout( () => { this.show(); }, 25 );
 
     if ( this.defaults.autoHide ) {
       this.bertTimer();
@@ -60,8 +60,8 @@ class BertAlert {
   }
 
   registerClickHandler() {
-    this.bertAlert.removeEventListener( 'click' );
-    this.bertAlert.addEventListener( 'click', () => { this.hide(); } );
+    this.bertAlert.removeEventListener( 'click', this.handleClick );
+    this.handleClick = this.bertAlert.addEventListener( 'click', () => { this.hide(); } );
   }
 
   bertTimer() {
@@ -87,12 +87,12 @@ class BertAlert {
     setTimeout( () => {
       alertClasses.remove( 'show' );
       Session.set( 'bertAlert', null );
-    }, 800 ); // 800 === animation delay.
+    }, 500 ); // Animation delay is 800ms, this should fire as it completes.
 
     if ( callback ) {
       // If we have a callback (chained alert), then we want to wait until
       // above hide functions have finished before calling it.
-      setTimeout( () => { callback(); }, 850 );
+      setTimeout( () => { callback(); }, 510 );
     }
   }
 
