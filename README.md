@@ -1,7 +1,7 @@
 ### Bert
 Bert is a client side, multi-style alerts system for Meteor.
 
-<img src="https://tmc-post-content.s3.amazonaws.com/bert-happy-mad.png" alt="Bert looking happy and mad.">
+![Say what again!](https://cl.ly/0d3O121h021t/bert.jpg)
 
 #### Contents
 1. Installation
