@@ -14,7 +14,7 @@ Package.onUse( function( api ) {
     'templating',
     'session',
     'jquery',
-    'fourseven:scss@4.5.0',
+    'fourseven:scss@4.5.4',
     'fortawesome:fontawesome@4.4.0'
   ], 'client');
 
