@@ -28,7 +28,8 @@ class BertAlert {
     this.defaults = {
       hideDelay: 3500,
       style: 'fixed-top',
-      type: 'default'
+      type: 'default',
+      autoHide: true
     };
   }
 
@@ -59,7 +60,7 @@ class BertAlert {
 
   bertTimer() {
     clearTimeout( this.timer );
-    if(this.defaults.hideDelay > 0) {
+    if(this.hideDelay > 0) {
       this.timer = setTimeout( () => { this.hide(); }, this.defaults.hideDelay );
     }
     return this.timer;
@@ -88,7 +89,8 @@ class BertAlert {
         message: alert[0].message || "",
         type: type,
         style: alert[0].style || this.defaults.style,
-        icon: alert[0].icon || this.icons[ type ]
+        icon: alert[0].icon || this.icons[ type ],
+        hideDelay: alert[0].hideDelay || this.defaults.hideDelay
       });
     } else {
       let type = alert[1] || this.defaults.type;
@@ -97,7 +99,8 @@ class BertAlert {
         message: alert[0] || "",
         type: type,
         style: alert[2] || this.defaults.style,
-        icon: alert[3] || this.icons[ type ]
+        icon: alert[3] || this.icons[ type ],
+        hideDelay: alert[4] || this.defaults.hideDelay
       });
     }
   }
