@@ -59,7 +59,9 @@ class BertAlert {
 
   bertTimer() {
     clearTimeout( this.timer );
-    this.timer = setTimeout( () => { this.hide(); }, this.defaults.hideDelay );
+    if(this.defaults.hideDelay > 0) {
+      this.timer = setTimeout( () => { this.hide(); }, this.defaults.hideDelay );
+    }
     return this.timer;
   }
 
