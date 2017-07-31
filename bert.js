@@ -28,8 +28,7 @@ class BertAlert {
     this.defaults = {
       hideDelay: 3500,
       style: 'fixed-top',
-      type: 'default',
-      autoHide: true
+      type: 'default'
     };
   }
 
