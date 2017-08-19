@@ -59,8 +59,9 @@ class BertAlert {
 
   bertTimer() {
     clearTimeout( this.timer );
-    if(this.hideDelay > 0) {
-      this.timer = setTimeout( () => { this.hide(); }, this.defaults.hideDelay );
+    let currentAlert = Session.get('bertAlert');
+    if(currentAlert.hideDelay > 0) {
+      this.timer = setTimeout( () => { this.hide(); }, currentAlert.hideDelay );
     }
     return this.timer;
   }
@@ -82,7 +83,7 @@ class BertAlert {
   setBertOnSession( alert ) {
     if ( typeof alert[0] === 'object' ) {
       let type = alert[0].type || this.defaults.type;
-
+      console.log(alert[0].hideDelay);
       Session.set( 'bertAlert', {
         title: alert[0].title || "",
         message: alert[0].message || "",
