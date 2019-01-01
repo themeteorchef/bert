@@ -24,11 +24,11 @@ meteor add themeteorchef:bert
 #### Upgrade Warning
 Bert wasn't too happy about this one. Because Bert relies on the `ecmascript` package, v2.0.* is _not_ compatible with versions of Meteor before 1.2. This means that if you attempt to update Bert in a Meteor application using a version < 1.2, you will receive an error in your terminal. For now, applications that need to remain below 1.2 are advised to pin Bert to `1.1.0`: `meteor add bert@1.1.0`. Bert apologizes for this.
 
-#### Changes & Deprecations in v2.0.*
+#### Changes & Deprecations in v2.x
 Bert hit the gym since v1.0 came out and has dropped some fat and put on a bit of muscle. If you were working with Bert prior to version 2.0 here are a few things to keep in mind:
 
 1. Bert no longer requires you to add the `{{> bertAlert}}` template tag manually. This is automatically added to your application's `<body></body>` tag.
-2. Bert has added support for icons via the `fortawesome:fontawesome` package.
+2. <strike>Bert has added support for icons via the `fortawesome:fontawesome` package</strike>. **As of v2.2.0, you are responsible for providing the FontAwesome dependency. This allows you to use any version of that library that you'd like.** [Instructions for installation are found here](https://fontawesome.com/start).
 3. Bert has dropped support for setting the following defaults: `animated`, `animationSpeed`, `autoHide`, and `dismmissable`.
 4. Like other notification systems, Bert can now be dismissed with a single click, anywhere on the message.
 5. Bert went to some self-actualization classes and realized he prefers to always be animated and always hide on his own. Of course, you can suggest how fast he should hide and he'll listen.
@@ -43,10 +43,6 @@ There are two ways to display messages with Bert. The classic way, passing a mes
 Bert.alert( 'Yes, I do Mind!', 'danger', 'growl-top-right' );
 ```
 
-Which gets us what we'd expect:
-
-![Revealing Bert using the classic method.](https://tmc-post-content.s3.amazonaws.com/bert-example.gif)
-
 And now in v2.0 we also get the Advanced method...
 
 ```
@@ -55,21 +51,15 @@ Bert.alert({
   message: 'Ernie &mdash; Rubber Duckie',
   type: 'info',
   style: 'growl-top-right',
-  icon: 'fa-music'
+  icon: 'fas fa-music'
 });
 ```
-
-Which dresses up Bert with a bit of panache:
-
-![](https://tmc-post-content.s3.amazonaws.com/bert-advanced.gif)
 
 It's important to point out that the Classic version has also picked up support for adding an icon, but requires that you specify all arguments before it:
 
 ```
-Bert.alert( 'Ernie, pick up your rubber duckies, now!', 'danger', 'fixed-top', 'fa-frown-o' );
+Bert.alert( 'Ernie, pick up your rubber duckies, now!', 'danger', 'fixed-top', 'fas fa-frown-open' );
 ```
-
-![Setting a classic style alert with an icon.](https://tmc-post-content.s3.amazonaws.com/bert-classic-with-icon.gif)
 
 #### API & Defaults
 Bert wants to make sure that your users know how angry (or happy) he is about what they're doing. Bert comes with a handful of ways to get the point across:
@@ -92,11 +82,11 @@ Bert wants to make sure that your users know how angry (or happy) he is about wh
 
 
 - `Bert.icons` (based on the type passed to Bert)
-  - `default`: `'fa-bell'`,
-  - `success`: `'fa-check'`,
-  - `info`: `'fa-info'`,
-  - `warning`: `'fa-warning'`,
-  - `danger`: `'fa-remove'`
+  - `default`: `'fas fa-bell'`,
+  - `success`: `'fas fa-check'`,
+  - `info`: `'fas fa-info'`,
+  - `warning`: `'fas fa-exclamation-triangle'`,
+  - `danger`: `'fas fa-times'`
 
 If you'd like (recommended), you can set any of the values above as defaults, along with a few other settings:
 
@@ -111,7 +101,7 @@ Bert.defaults = {
   // Accepts: default, success, info, warning, danger.
 };
 ```
-To add new types and styles, you can call `Bert.types.push( '<type>' )` or `Bert.styles.push( '<style>' )` from anywhere on the client. To change the icon used for one of the pre-defined types, you can call `Bert.icons.<type> = 'fa-icon-name'`, or add a new one by calling `Bert.icons[ 'new-type' ] = 'fa-icon-name'`.
+To add new types and styles, you can call `Bert.types.push( '<type>' )` or `Bert.styles.push( '<style>' )` from anywhere on the client. To change the icon used for one of the pre-defined types, you can call `Bert.icons.<type> = 'fas fa-icon-name'`, or add a new one by calling `Bert.icons[ 'new-type' ] = 'fas fa-icon-name'`. **Heads up**: The `fas` part is defining which sub-library of FontAwesome you're using (solid, regular, and light). Again, Bert _DOES NOT_ load FontAwesome for you, so which classes you use will be dependent on which version of the library you load on your own.
 
 To set a new default, just call `Bert.defaults.<setting>` in your client code. For example, to change Bert's hide delay (how long Bert stays on screen), you can set `Bert.defaults.hideDelay = 2000`. Here, this would make Bert's alerts go away after two seconds instead of three and a half.
 
@@ -155,7 +145,7 @@ Bert.alert({
   style: 'growl-bottom-right',
   title: 'Game Added',
   message: 'Final Fantasy VII',
-  icon: 'fa-gamepad'
+  icon: 'fas fa-gamepad'
 });
 ```
 The value of `type` simply gets added to Bert as a CSS class, so we can tweak the colors just by adding a little CSS on the client:
