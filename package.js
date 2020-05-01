@@ -14,7 +14,7 @@ Package.onUse( function( api ) {
     'templating',
     'session',
     'jquery',
-    'fourseven:scss@4.10.0',
+    'fourseven:scss@4.12.0',
   ], 'client');
 
   api.addFiles([
