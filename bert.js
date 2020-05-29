@@ -48,7 +48,7 @@ class BertAlert {
   handleAlert( alert ) {
     this.registerClickHandler();
     this.setBertOnSession( alert );
-    setTimeout( () => { this.show(); }, 20 );
+    requestAnimationFrame(() => this.show());
     this.bertTimer();
   }
 
@@ -73,6 +73,7 @@ class BertAlert {
     $( '.bert-alert' ).removeClass( 'animate' );
     setTimeout( () => {
       $( '.bert-alert' ).removeClass( 'show' );
+      $( '.bert-icon').remove();
       Session.set( 'bertAlert', null );
     }, 300 );
   }
@@ -80,22 +81,24 @@ class BertAlert {
   setBertOnSession( alert ) {
     if ( typeof alert[0] === 'object' ) {
       let type = alert[0].type || this.defaults.type;
+      const icon = alert[0].icon || this.icons[ type ];
 
       Session.set( 'bertAlert', {
         title: alert[0].title || "",
         message: alert[0].message || "",
         type: type,
         style: alert[0].style || this.defaults.style,
-        icon: alert[0].icon || this.icons[ type ]
+        icon: `<div class="bert-icon"><i class="${icon}"></i></div>`
       });
     } else {
       let type = alert[1] || this.defaults.type;
+      const icon = alert[3] || this.icons[ type ];
 
       Session.set( 'bertAlert', {
         message: alert[0] || "",
         type: type,
         style: alert[2] || this.defaults.style,
-        icon: alert[3] || this.icons[ type ]
+        icon: `<div class="bert-icon"><i class="${icon}"></i></div>`
       });
     }
   }

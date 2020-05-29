@@ -1,13 +1,15 @@
 <template name="bertAlert">
-  <div class="bert-alert {{alert.style}} {{alert.type}} clearfix">
+  {{#with a=alert}}
+  <div class="bert-alert {{a.style}} {{a.type}} clearfix">
     <div class="bert-container">
       <div class="bert-gem">
-        <i class="{{alert.icon}}"></i>
+        {{{a.icon}}}
       </div>
       <div class="bert-content">
-        {{#if alert.title}}<h5>{{alert.title}}</h5>{{/if}}
-        <p>{{{alert.message}}}</p>
+        {{#if a.title}}<h5>{{a.title}}</h5>{{/if}}
+        <p>{{{a.message}}}</p>
       </div>
     </div>
   </div>
+  {{/with}}
 </template>
