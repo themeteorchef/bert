@@ -13,8 +13,8 @@ Package.onUse( function( api ) {
     'ecmascript',
     'templating',
     'session',
-    'jquery',
     'fourseven:scss@4.12.0',
+    'tracker'
   ], 'client');
 
   api.addFiles([

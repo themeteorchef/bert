@@ -1,0 +1,26 @@
+{
+  "name": "bert",
+  "version": "1.0.0",
+  "description": "Bert is a client side, multi-style alerts system for Meteor.",
+  "main": "bert.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brucejo75/bert.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brucejo75/bert/issues"
+  },
+  "homepage": "https://github.com/brucejo75/bert#readme"
+}
