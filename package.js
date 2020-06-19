@@ -14,7 +14,7 @@ Package.onUse(function (api) {
       "ecmascript",
       "templating",
       "session",
-      "jquery@3.0.0",
+      "jquery",
       "fourseven:scss@4.12.0",
     ],
     "client"
