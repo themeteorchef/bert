@@ -103,25 +103,13 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 }
 
 .bert-alert.fixed-top {
-  top: -100%;
+  top: 0px;
   padding-top: 20px;
-  -webkit-transition: top .8s $transition;
-
-  &.animate {
-    padding-top: 20px;
-    top: -6px;
-  }
 }
 
 .bert-alert.fixed-bottom {
-  bottom: -100%;
+  bottom: 0px;
   padding-bottom: 20px;
-  -webkit-transition: bottom .8s $transition;
-
-  &.animate {
-    padding-bottom: 20px;
-    bottom: -6px;
-  }
 }
 
 .bert-alert[class*="growl-"] {
@@ -143,14 +131,9 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 
 .bert-alert.growl-top-left,
 .bert-alert.growl-bottom-left {
-  left: -100%;
+  left: 0px;
   right: auto;
   width: calc( 100% - 30px );
-  -webkit-transition: left .8s $transition;
-
-  &.animate {
-    left: 15px;
-  }
 }
 
 .bert-alert.growl-top-left,
@@ -165,14 +148,9 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 
 .bert-alert.growl-top-right,
 .bert-alert.growl-bottom-right {
-  right: -100%;
+  right: 0px;
   left: auto;
   width: calc( 100% - 30px );
-  -webkit-transition: right .8s $transition;
-
-  &.animate {
-    right: 15px;
-  }
 }
 
 @media screen and ( min-width: 350px ) {
@@ -182,23 +160,13 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 
   .bert-alert.growl-top-left,
   .bert-alert.growl-bottom-left {
-    left: -100%;
+    left: 15px;
     right: auto;
-    -webkit-transition: left .8s $transition;
-
-    &.animate {
-      left: 15px;
-    }
   }
 
   .bert-alert.growl-top-right,
   .bert-alert.growl-bottom-right {
-    right: -100%;
+    right: 15px;
     left: auto;
-    -webkit-transition: right .8s $transition;
-
-    &.animate {
-      right: 15px;
-    }
   }
 }
