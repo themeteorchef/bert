@@ -21,6 +21,10 @@ To get Bert into your app, just run the following command from within your proje
 meteor add themeteorchef:bert
 ```
 
+```javascript
+import { Bert } from 'meteor/themeteorchef:bert';
+```
+
 #### Upgrade Warning
 Bert wasn't too happy about this one. Because Bert relies on the `ecmascript` package, v2.0.* is _not_ compatible with versions of Meteor before 1.2. This means that if you attempt to update Bert in a Meteor application using a version < 1.2, you will receive an error in your terminal. For now, applications that need to remain below 1.2 are advised to pin Bert to `1.1.0`: `meteor add bert@1.1.0`. Bert apologizes for this.
 
