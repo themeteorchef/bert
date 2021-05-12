@@ -10,9 +10,11 @@ Package.onUse(function (api) {
   api.versionsFrom("1.2.0.2");
 
   api.use(
-    ["ecmascript", "templating", "session", "jquery", "fourseven:scss@4.12.0"],
+    ["ecmascript", "templating", "session", "fourseven:scss@4.12.0"],
     "client"
   );
+
+  api.use("jquery", "client", { weak: true });
 
   api.addFiles(
     [

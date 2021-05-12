@@ -15,6 +15,11 @@ Bert is a client side, multi-style alerts system for Meteor.
 5. License
 
 #### Installation
+Bert has a weak dependency on jQuery (similar as Blaze), so you can add jQuery to your Meteor app from a [CDN](https://code.jquery.com/) or a [Meteor package](https://atmospherejs.com/meteor/jquery):
+```
+meteor add jquery
+```
+
 To get Bert into your app, just run the following command from within your project's directory:
 
 ```
