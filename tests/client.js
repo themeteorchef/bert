@@ -122,10 +122,10 @@ Tinytest.addAsync( 'Bert can set a growl-bottom-right message', function ( test,
 });
 
 Tinytest.addAsync( 'Bert can set a custom icon', function ( test, next ) {
-  Bert.alert( 'Testing 123', 'default', 'fixed-top', 'fa-amazon' );
+  Bert.alert( 'Testing 123', 'default', 'fixed-top', 'bi bi-balloon' );
 
   Meteor.setTimeout( function() {
-    var hasClass = $( '.bert-alert i' ).hasClass( 'fa-amazon' );
+    var hasClass = $( '.bert-alert i' ).hasClass( 'bi bi-balloon' );
     test.equal( hasClass, true );
     next();
   }, 500 );
@@ -137,7 +137,7 @@ Tinytest.addAsync( 'Bert can set a complex message', function ( test, next ) {
     message: 'Artist &mdash; Song Name',
     type: 'info',
     style: 'growl-top-right',
-    icon: 'fa-music'
+    icon: 'bi bi-music-note-beamed'
   });
 
   Meteor.setTimeout( function() {
@@ -146,7 +146,7 @@ Tinytest.addAsync( 'Bert can set a complex message', function ( test, next ) {
       message: $( '.bert-alert .bert-content p' ).text(),
       type: $( '.bert-alert' ).hasClass( 'info' ),
       style: $( '.bert-alert' ).hasClass( 'growl-top-right' ),
-      icon: $( '.bert-alert i' ).hasClass( 'fa-music' )
+      icon: $( '.bert-alert i' ).hasClass( 'bi bi-music-note-beamed' )
     };
 
     test.equal( alert.title, 'Now Playing' );

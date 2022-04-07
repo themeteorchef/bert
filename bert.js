@@ -1,3 +1,7 @@
+/**
+ * Set a timer to delay execution of subsequent items
+ * @param {number} ms
+ */
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -21,12 +25,13 @@ class BertAlert {
       'danger'
     ];
 
+
     this.icons = {
-      default: 'fas fa-bell',
-      success: 'fas fa-check',
-      info: 'fas fa-info',
-      warning: 'fas fa-exclamation-triangle',
-      danger: 'fas fa-times'
+      default: 'bi bi-bell',
+      success: 'bi bi-check',
+      info: 'bi bi-info',
+      warning: 'bi bi-exclamation-triangle',
+      danger: 'bi bi-x'
     };
 
     this.defaults = {
