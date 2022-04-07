@@ -36,6 +36,11 @@ Bert hit the gym since v1.0 came out and has dropped some fat and put on a bit o
 
 Despite having totally ripped abs now—and aside from the changes to defaults mentioned above—Bert's API is 100% backwards compatible. Bert doesn't forget where he came from. Represent.
 
+
+#### Changes & Deprecations in v3.x
+Bert has shed `jQuery`. Bert is now using a [Bootstrap Icons](https://github.com/twbs/icons) for it's default icons. Don't forget to add them as a dependency. [Instructions for installation are found here](https://icons.getbootstrap.com/#install)
+
+
 #### Basic Usage
 There are two ways to display messages with Bert. The classic way, passing a message, type, and style:
 
@@ -51,14 +56,14 @@ Bert.alert({
   message: 'Ernie &mdash; Rubber Duckie',
   type: 'info',
   style: 'growl-top-right',
-  icon: 'fas fa-music'
+  icon: 'bi bi-music-note-beamed'
 });
 ```
 
 It's important to point out that the Classic version has also picked up support for adding an icon, but requires that you specify all arguments before it:
 
 ```
-Bert.alert( 'Ernie, pick up your rubber duckies, now!', 'danger', 'fixed-top', 'fas fa-frown-open' );
+Bert.alert( 'Ernie, pick up your rubber duckies, now!', 'danger', 'fixed-top', 'bi bi-emoji-frown' );
 ```
 
 #### API & Defaults
@@ -82,11 +87,11 @@ Bert wants to make sure that your users know how angry (or happy) he is about wh
 
 
 - `Bert.icons` (based on the type passed to Bert)
-  - `default`: `'fas fa-bell'`,
-  - `success`: `'fas fa-check'`,
-  - `info`: `'fas fa-info'`,
-  - `warning`: `'fas fa-exclamation-triangle'`,
-  - `danger`: `'fas fa-times'`
+  - `default`: `'bi bi-bell'`,
+  - `success`: `'bi bi-check'`,
+  - `info`: `'bi bi-info'`,
+  - `warning`: `'bi bi-exclamation-triangle'`,
+  - `danger`: `'bi bi-x'`
 
 If you'd like (recommended), you can set any of the values above as defaults, along with a few other settings:
 
@@ -101,7 +106,7 @@ Bert.defaults = {
   // Accepts: default, success, info, warning, danger.
 };
 ```
-To add new types and styles, you can call `Bert.types.push( '<type>' )` or `Bert.styles.push( '<style>' )` from anywhere on the client. To change the icon used for one of the pre-defined types, you can call `Bert.icons.<type> = 'fas fa-icon-name'`, or add a new one by calling `Bert.icons[ 'new-type' ] = 'fas fa-icon-name'`. **Heads up**: The `fas` part is defining which sub-library of FontAwesome you're using (solid, regular, and light). Again, Bert _DOES NOT_ load FontAwesome for you, so which classes you use will be dependent on which version of the library you load on your own.
+To add new types and styles, you can call `Bert.types.push( '<type>' )` or `Bert.styles.push( '<style>' )` from anywhere on the client. To change the icon used for one of the pre-defined types, you can call `Bert.icons.<type> = 'bi bi-icon-name'`, or add a new one by calling `Bert.icons[ 'new-type' ] = 'bi bi-icon-name'`. **Heads up**: The `fas` part is defining which sub-library of FontAwesome you're using (solid, regular, and light). Again, Bert _DOES NOT_ load FontAwesome for you, so which classes you use will be dependent on which version of the library you load on your own.
 
 To set a new default, just call `Bert.defaults.<setting>` in your client code. For example, to change Bert's hide delay (how long Bert stays on screen), you can set `Bert.defaults.hideDelay = 2000`. Here, this would make Bert's alerts go away after two seconds instead of three and a half.
 
@@ -145,7 +150,7 @@ Bert.alert({
   style: 'growl-bottom-right',
   title: 'Game Added',
   message: 'Final Fantasy VII',
-  icon: 'fas fa-gamepad'
+  icon: 'bi bi-controller'
 });
 ```
 The value of `type` simply gets added to Bert as a CSS class, so we can tweak the colors just by adding a little CSS on the client:
