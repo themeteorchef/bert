@@ -1,3 +1,7 @@
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 class BertAlert {
   constructor() {
     this.styles = [
@@ -42,7 +46,9 @@ class BertAlert {
   }
 
   isVisible() {
-    return $( '.bert-alert' ).hasClass( 'show' );
+    // return $( '.bert-alert' ).hasClass( 'show' );
+    const el = document.getElementsByClassName('bert-alert')[0];
+    return el.classList.contains('show');
   }
 
   handleAlert( alert ) {
@@ -53,8 +59,12 @@ class BertAlert {
   }
 
   registerClickHandler() {
-    $( '.bert-alert' ).off( 'click' );
-    $( '.bert-alert' ).on( 'click', () => { this.hide(); } );
+
+    // $( '.bert-alert' ).off( 'click' );
+    // $( '.bert-alert' ).on( 'click', () => { this.hide(); } );
+    const el = document.getElementsByClassName('bert-alert')[0];
+    el.removeEventListener('click', () => {});
+    el.addEventListener('click', () => { this.hide(); } );
   }
 
   bertTimer() {
@@ -64,18 +74,34 @@ class BertAlert {
   }
 
   show() {
-    $( '.bert-alert' ).addClass( 'show' ).delay( 25 ).queue( () => {
-      $( '.bert-alert' ).addClass( 'animate' ).dequeue();
-    });
+    // $( '.bert-alert' ).addClass( 'show' ).delay( 25 ).queue( () => {
+    //   $( '.bert-alert' ).addClass( 'animate' ).dequeue();
+    // });
+
+    const el = document.getElementsByClassName('bert-alert')[0];
+    el.classList.add('show');
+    delay(25).then(() => el.classList.add('animate'))
   }
 
   hide() {
-    $( '.bert-alert' ).removeClass( 'animate' );
-    setTimeout( () => {
-      $( '.bert-alert' ).removeClass( 'show' );
-      $( '.bert-icon').remove();
+    // $( '.bert-alert' ).removeClass( 'animate' );
+    // setTimeout( () => {
+    //   $( '.bert-alert' ).removeClass( 'show' );
+    //   $( '.bert-icon').remove();
+    //   Session.set( 'bertAlert', null );
+    // }, 300 );
+    const el = document.getElementsByClassName('bert-alert')[0];
+    el.classList.remove('animate');
+    delay(300).then(() => {
+      el.classList.remove('show');
+      const el2 = document.getElementsByClassName('bert-icon')[0];
+      if (el2.parentNode !== null) {
+        el2.parentNode.removeChild(el2);
+      }
       Session.set( 'bertAlert', null );
-    }, 300 );
+    })
+
+
   }
 
   setBertOnSession( alert ) {
