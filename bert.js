@@ -1,3 +1,5 @@
+/* globals requestAnimationFrame */
+
 class BertAlert {
   constructor() {
     this.styles = [
@@ -32,12 +34,12 @@ class BertAlert {
     };
   }
 
-  alert() {
+  alert(...args) {
     if (this.isVisible()) {
       this.hide();
-      setTimeout(() => this.handleAlert(arguments), 300);
+      setTimeout(() => this.handleAlert(args), 300);
     } else {
-      this.handleAlert(arguments);
+      this.handleAlert(args);
     }
   }
 
@@ -104,4 +106,5 @@ class BertAlert {
   }
 }
 
+// eslint-disable-next-line no-global-assign
 Bert = new BertAlert();
