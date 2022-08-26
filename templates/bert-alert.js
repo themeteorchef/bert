@@ -1,3 +1,5 @@
 Template.bertAlert.helpers({
-  alert() { return Session.get( 'bertAlert' ); }
+  alert() {
+    return Session.get('bertAlert');
+  },
 });
