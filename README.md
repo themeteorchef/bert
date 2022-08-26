@@ -57,6 +57,7 @@ Bert.alert({
   type: 'info',
   style: 'growl-top-right',
   icon: 'fas fa-music'
+  hideDelay: 60 * 60 * 1000
 });
 ```
 

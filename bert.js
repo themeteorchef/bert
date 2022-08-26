@@ -51,7 +51,7 @@ class BertAlert {
     this.registerClickHandler();
     this.setBertOnSession(alert);
     requestAnimationFrame(() => this.show());
-    this.bertTimer();
+    this.bertTimer(alert);
   }
 
   registerClickHandler() {
@@ -60,10 +60,10 @@ class BertAlert {
       .on('click', () => this.hide());
   }
 
-  bertTimer() {
+  bertTimer(alert) {
     clearTimeout(this.timer);
-    this.timer = setTimeout(() => this.hide(), this.defaults.hideDelay);
-    return this.timer;
+    const hideDelay = ((typeof alert[0] === 'object') && alert[0].hideDelay) || this.defaults.hideDelay;
+    this.timer = setTimeout(() => this.hide(), hideDelay);
   }
 
   show() {
