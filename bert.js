@@ -30,7 +30,7 @@ class BertAlert {
     this.defaults = {
       hideDelay: 3500,
       permanent: false,
-      style: 'fixed-top',
+      style: 'growl-top-right',
       type: 'default',
     };
   }
