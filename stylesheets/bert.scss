@@ -37,7 +37,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 
   i {
     position: relative;
-    top: 0px;
+    top: 0;
     font-size: 16px;
     line-height: 16px;
   }
@@ -48,7 +48,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   width: calc( 100% - 47px );
 
   h5 + p {
-    top: 0px;
+    top: 0;
   }
 
   p {
@@ -60,7 +60,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 .bert-alert .bert-content > h5 {
   display: block;
   color: $black-2;
-  margin: 0px 0px 5px;
+  margin: 0 0 5px;
   font-size: 14px;
 }
 
@@ -86,9 +86,12 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 
 .bert-alert.success,
 .bert-alert.info,
-.bert-alert.warning,
 .bert-alert.danger {
   p, i { color: #fff; }
+}
+
+.bert-alert.warning {
+  p, i { color: $black-0; }
 }
 
 .bert-alert.success { background: $green; }
@@ -98,8 +101,8 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
 
 .bert-alert.fixed-top,
 .bert-alert.fixed-bottom {
-  left: 0px;
-  right: 0px;
+  left: 0;
+  right: 0;
 }
 
 .bert-alert.fixed-top {
@@ -131,7 +134,7 @@ $transition: cubic-bezier( 0.500, -0, 0.275, 1.110 );
   .bert-content h5 {
     display: block;
     color: #fff;
-    margin: 0px 0px 5px;
+    margin: 0 0 5px;
     font-size: 14px;
   }
 
