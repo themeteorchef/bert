@@ -51,13 +51,24 @@ Bert.alert( 'Yes, I do Mind!', 'danger', 'growl-top-right' );
 And now in v2.0 we also get the Advanced method...
 
 ```
+// alert with custom hideDelay
 Bert.alert({
   title: 'Now Playing',
   message: 'Ernie &mdash; Rubber Duckie',
   type: 'info',
   style: 'growl-top-right',
-  icon: 'fas fa-music'
-  hideDelay: 60 * 60 * 1000
+  icon: 'fas fa-music',
+  hideDelay: 5000,
+});
+
+// permanent alert without any hide delay
+Bert.alert({
+  title: 'Now Playing',
+  message: 'Ernie &mdash; Rubber Duckie',
+  type: 'info',
+  style: 'growl-top-right',
+  icon: 'fas fa-music',
+  permanent: true, // alert stays open without hideDelay
 });
 ```
 
@@ -100,6 +111,8 @@ If you'd like (recommended), you can set any of the values above as defaults, al
 Bert.defaults = {
   hideDelay: 3500,
   // Accepts: a number in milliseconds.
+  permanent: false,
+  // Accepts: boolean
   style: 'fixed-top',
   // Accepts: fixed-top, fixed-bottom, growl-top-left,   growl-top-right,
   // growl-bottom-left, growl-bottom-right.

@@ -29,6 +29,7 @@ class BertAlert {
 
     this.defaults = {
       hideDelay: 3500,
+      permanent: false,
       style: 'fixed-top',
       type: 'default',
     };
@@ -62,8 +63,14 @@ class BertAlert {
 
   bertTimer(alert) {
     clearTimeout(this.timer);
-    const hideDelay = ((typeof alert[0] === 'object') && alert[0].hideDelay) || this.defaults.hideDelay;
-    this.timer = setTimeout(() => this.hide(), hideDelay);
+    let { hideDelay, permanent } = this.defaults;
+
+    if (typeof alert[0] === 'object') {
+      ([{ hideDelay, permanent }] = alert);
+    }
+    if (!permanent) {
+      this.timer = setTimeout(() => this.hide(), hideDelay);
+    }
   }
 
   show() {
