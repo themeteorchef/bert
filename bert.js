@@ -55,8 +55,9 @@ class BertAlert {
   }
 
   registerClickHandler() {
-    $('.bert-alert').off('click');
-    $('.bert-alert').on('click', () => this.hide());
+    $('.bert-alert')
+      .off('click')
+      .on('click', () => this.hide());
   }
 
   bertTimer() {
@@ -75,7 +76,6 @@ class BertAlert {
     $('.bert-alert').removeClass('animate');
     setTimeout(() => {
       $('.bert-alert').removeClass('show');
-      $('.bert-icon').remove();
       Session.set('bertAlert', null);
     }, 300);
   }
@@ -83,24 +83,22 @@ class BertAlert {
   setBertOnSession(alert) {
     if (typeof alert[0] === 'object') {
       const type = alert[0].type || this.defaults.type;
-      const icon = alert[0].icon || this.icons[type];
 
       Session.set('bertAlert', {
         title: alert[0].title || '',
         message: alert[0].message || '',
         type,
         style: alert[0].style || this.defaults.style,
-        icon: `<div class="bert-icon"><i class="${icon}"></i></div>`,
+        icon: alert[0].icon || this.icons[type],
       });
     } else {
       const type = alert[1] || this.defaults.type;
-      const icon = alert[3] || this.icons[type];
 
       Session.set('bertAlert', {
         message: alert[0] || '',
         type,
         style: alert[2] || this.defaults.style,
-        icon: `<div class="bert-icon"><i class="${icon}"></i></div>`,
+        icon: alert[3] || this.icons[type],
       });
     }
   }
